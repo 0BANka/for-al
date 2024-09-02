@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For you</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+
+    <div class="login-container">
+        <h2>Только ты знаешь правильный ответ</h2>
+        <div id="errorMessage" class="error-message">Неверный логин или пароль!</div>
+        <form>
+            <input type="text" id="username" placeholder="Назови свое имя..">
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Ты знаешь какой пароль..">
+                <button type="button" class="show-password" onclick="togglePassword()">Показать пароль</button>
+            </div>
+            <button onclick="validateLogin()">Я готов узнать, что будет дальше..</button>
+        </form>
+    </div>
+    <p>Для твоего удобства вот переводчик, скопируй ссылку - не пожалеешь:<br><a href="https://www.duplichecker.com/ru/binary-translator" target="_blank">https://www.duplichecker.com/ru/binary-translator</a></p>
+
+    <div class="main-container hidden">
+        <div id="typingText" class="typing-text"></div>
+        <button id="nextButton" class="next-button" onclick="showNextSentence()">Дальше</button>
+        <button id="copyButton" class="copy-button" onclick="copyText()">Скопировать</button>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

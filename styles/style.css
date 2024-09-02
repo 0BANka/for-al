@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #004e92 0%, #000428 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.login-container:hover {
+    transform: translateY(-10px);
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #004e92;
+    font-size: 2em;
+    letter-spacing: 1px;
+    font-family: 'Great Vibes', cursive;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 25px;
+    background: #e0f7fa;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    background: #b2ebf2;
+    outline: none;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 25px;
+    background: #00796b;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.login-container button:hover {
+    background: #004d40;
+    transform: scale(1.05);
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #d32f2f;
+    transform: rotate(45deg);
+    animation: float 4s infinite;
+    opacity: 0.7;
+}
+
+.login-container .password-container {
+    position: relative;
+    width: 100%;
+}
+
+.login-container .password-container input[type="password"],
+.login-container .password-container input[type="text"] {
+    padding-right: 50px;
+}
+
+.error-message {
+    color: #d32f2f;
+    margin-top: 10px;
+    font-size: 0.9em;
+    display: none;
+}
+
+.main-container {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.typing-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    text-align: left;
+    color: #66ff00;
+    font-family: "Inconsolata", monospace;
+}
+
+.next-button {
+    display: none;
+    padding: 10px 20px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+.copy-button {
+    display: none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+.copy-button {
+    background-color: #ff5722;
+    color: white;
+}
+
+.copy-button:hover {
+    background-color: #e64a19;
+    transform: scale(1.05);
+}
+
+.next-button:hover {
+    background-color: #004d40;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 1em;
+    position: absolute;
+    top: 80%;
+    color: #fff;
+    text-align: center;
+}
+
+a {
+    color: #ffeb3b;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-600px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.highlighted {
+    color: red;
+    animation: shake 0.5s infinite;
+    font-size: 1.6em;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 20%; animation-delay: 1s; }
+.heart:nth-child(3) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(4) { left: 40%; animation-delay: 3s; }
+.heart:nth-child(5) { left: 50%; animation-delay: 4s; }
+.heart:nth-child(6) { left: 60%; animation-delay: 5s; }
+.heart:nth-child(7) { left: 70%; animation-delay: 6s; }
+.heart:nth-child(8) { left: 80%; animation-delay: 7s; }
+.heart:nth-child(9) { left: 90%; animation-delay: 8s; }
