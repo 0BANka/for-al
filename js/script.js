@@ -12,34 +12,46 @@ function togglePassword() {
 
 function validateLogin() {
     const username = document.getElementById('username').value.toLowerCase();
-    const password = document.getElementById('password').value;
+    const password = document.getElementById('password').value.toLowerCase();   
     const errorMessage = document.getElementById('errorMessage');
     const trueUsernames = ['аль', 'альфа', 'al', 'alfa', 'альтушка'];
     const truePasswords = ['314159265358', '3,14159265358', '3.14159265358'];
 
-    if (username.trim() === '' && password.trim() === '') {
-        errorMessage.innerText = 'Заполни все поля!';
-        errorMessage.style.display = 'block';
-    } else if (username.trim() === '') {
-        errorMessage.innerText = 'Заполни свое имя!';
-        errorMessage.style.display = 'block';
-    } else if (password.trim() === '') {
-        errorMessage.innerText = 'Заполни пароль!';
-        errorMessage.style.display = 'block';
-    }
-
     if (trueUsernames.includes(username) && truePasswords.includes(password)) {
         errorMessage.style.display = 'none';
         removeAllContent();
+    } else if (username.trim() === '' && password.trim() === '') {
+        errorMessage.innerText = 'Заполни все поля!';
+        errorMessage.style.display = 'block';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        return false;
+    } else if (username.trim() === '') {
+        errorMessage.innerText = 'Заполни свое имя!';
+        errorMessage.style.display = 'block';
+        document.getElementById('username').value = '';
+        return false;
+    } else if (password.trim() === '') {
+        errorMessage.innerText = 'Заполни пароль!';
+        errorMessage.style.display = 'block';
+        document.getElementById('password').value = '';
+        return false;
     } else if (trueUsernames.includes(username) && !truePasswords.includes(password)) {
         errorMessage.innerText = 'Неверный пароль! Но ты его знаешь..';
         errorMessage.style.display = 'block';
+        document.getElementById('password').value = '';
+        return false;
     } else if (!trueUsernames.includes(username) && truePasswords.includes(password)) {
-        errorMessage.innerText = 'Введи свое правильное имя';
+        errorMessage.innerText = 'Введи верное свое имя';
         errorMessage.style.display = 'block';
+        document.getElementById('username').value = '';
+        return false;
     } else {
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
         errorMessage.innerText = 'Неверное имя и пароль. Хорошо подумай - ты знаешь правильные данные!';
         errorMessage.style.display = 'block';
+        return false;
     }
 }
 
