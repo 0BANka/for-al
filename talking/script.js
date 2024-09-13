@@ -372,6 +372,10 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+document.body.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+}, { passive: false });
+
 function goToMessage() {
     const selectedMessageId = parseInt(messageNumberInput.value);
     messageNumberInput.value = '8882271239';
