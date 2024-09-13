@@ -463,6 +463,8 @@ function showNextMessage() {
     if (currentDialogue) {
         copyButtonShown = false;
         updateMessageCounter();
+        copyBtn.innerText = 'Скопировать';
+        copyBtn.classList.remove('copied');
         messageCount++;
 
         if (currentDialogue.style) {
@@ -538,16 +540,17 @@ function isClickOnButton(element) {
 
 
 function copyMessage() {
-    const range = document.createRange();
-    range.selectNode(messageElement);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = messageElement.innerText;
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
     document.execCommand('copy');
-    window.getSelection().removeAllRanges();
-    
+    document.body.removeChild(tempTextArea);
+
     copyBtn.innerText = 'Скопировано!';
     copyBtn.classList.add('copied');
 }
+
 
 
 copyBtn.addEventListener('click', copyMessage);
