@@ -403,14 +403,14 @@ function goToMessage() {
         showNextMessage();
         updateMessageCounter();
         modal.style.display = 'none';
+        
+        audioClick = false;
+        if (messageCounter.innerText !== '#109' || messageCounter.innerText !== '#127') {
+            audio.pause();
+        }
     } else {
         alert('Неверный номер сообщения');
         messageNumberInput.value = messageCounter.innerText.slice(1);
-    }
-
-    audioClick = false;
-    if (messageCounter.innerText !== '#109' || messageCounter.innerText !== '#127') {
-        audio.pause();
     }
 }
 
