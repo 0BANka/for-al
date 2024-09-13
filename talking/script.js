@@ -194,6 +194,7 @@ let currentBranch = 'start';
 let messageIndex = 0;
 let typingSpeed = 50; 
 let messageCount = 0;
+let audioClick = false;
 
 const messageElement = document.getElementById('message');
 const nextBtn = document.getElementById('next-btn');
@@ -210,6 +211,10 @@ const speechBubble = document.querySelector('.speech-bubble');
 const closeModalBtn = document.getElementById('close-modal');
 const goToMessageBtn = document.getElementById('go-to-message');
 const messageNumberInput = document.getElementById('message-number');
+
+const audioElement = document.createElement('audio');
+document.getElementById('audio-container').appendChild(audioElement);
+const audio = new Audio();
 
 function applyStyle(style) {
     switch (style) {
@@ -257,6 +262,7 @@ function applyStyle(style) {
             document.body.classList.add('background-black');
             document.body.classList.remove('background-purple');
             messageElement.classList.add('glitch-text');
+
             break;
         case 'alert':
             resetStyle();
@@ -282,10 +288,14 @@ function applyStyle(style) {
                 startScreen.insertAdjacentElement('beforebegin', raindrop);
             }
             if (messageCounter.innerText === '#144') {
+                messageElement.classList.add('heart-beat');
                 messageElement.innerText = '❤️';
                 messageElement.style.fontSize = '64px';
+                messageElement.style.textAlign = 'center';
             } else {
                 messageElement.style.fontSize = '18px';
+                messageElement.style.textAlign = 'start';
+                messageElement.classList.remove('heart-beat');
             }
             break;
         default:
@@ -312,6 +322,8 @@ function resetStyle() {
     document.body.classList.remove('background-okay');
     document.body.classList.remove('rain-animation');
     messageElement.style.fontSize = '18px';
+    messageElement.style.textAlign = 'start';
+    messageElement.classList.remove('heart-beat');
     const raindrops = document.querySelectorAll('.rain-drop');
     if (raindrops) {
         raindrops.forEach(drop => {
@@ -376,7 +388,6 @@ function goToMessage() {
     const selectedMessageId = parseInt(messageNumberInput.value);
     messageNumberInput.value = '8882271239';
     
-    
     let found = false;
     for (const branch in dialogueTree) {
         const index = dialogueTree[branch].findIndex(node => node.id === selectedMessageId);
@@ -395,6 +406,11 @@ function goToMessage() {
     } else {
         alert('Неверный номер сообщения');
         messageNumberInput.value = messageCounter.innerText.slice(1);
+    }
+
+    audioClick = false;
+    if (messageCounter.innerText !== '#109' || messageCounter.innerText !== '#127') {
+        audio.pause();
     }
 }
 
@@ -418,7 +434,6 @@ document.addEventListener('click', (event) => {
         closeModal();
     }
 });
-
 
 function typeMessage(message, index = 0, callback) {
     if (index === 0) {
@@ -530,7 +545,6 @@ function copyMessage() {
     document.execCommand('copy');
     window.getSelection().removeAllRanges();
     
-    
     copyBtn.innerText = 'Скопировано!';
     copyBtn.classList.add('copied');
 }
@@ -540,6 +554,38 @@ copyBtn.addEventListener('click', copyMessage);
 document.addEventListener('click', handleClick);
 
 nextBtn.addEventListener('click', () => {
+    if (messageCounter.innerText === '#109') {
+        audio.src = '../audio/Akira Yamaoka & Mary Elizabeth McGlynn - One More Soul to the Call.mp3';
+        audio.loop = false;
+        if (!audioClick) {
+            audioClick = true;
+
+            audio.addEventListener('canplaythrough', () => {
+                audio.play().then(() => {
+                    console.log('Аудио воспроизводится');
+                }).catch(error => {
+                    console.log('Не удалось воспроизвести аудио:', error);
+                });
+            }, { once: true });
+        }
+    } else if (messageCounter.innerText === '#126') {
+        audioClick = false;
+        audio.pause();
+    } else if (messageCounter.innerText === '#127') {
+        audio.src = '../audio/Painted-in-Gray-Music-Box.mp3';
+        audio.loop = false;
+        if (!audioClick) {
+            audioClick = true;
+
+            audio.addEventListener('canplaythrough', () => {
+                audio.play().then(() => {
+                    console.log('Аудио воспроизводится');
+                }).catch(error => {
+                    console.log('Не удалось воспроизвести аудио:', error);
+                });
+            }, { once: true });
+        }
+    }
     showNextMessage();
 });
 

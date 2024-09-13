@@ -67,7 +67,7 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     position: relative;
     padding-bottom: 80px;
-    width: 100%;
+    min-width: 35%;
 }
 
 .dialogue-box {
@@ -683,4 +683,23 @@ body {
     left: 80%;
     animation-duration: 1.3s;
     animation-delay: -0.8s;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    75% {
+        transform: scale(1.2);
+    }
+}
+
+.heart-beat {
+    animation: heartbeat 2s infinite ease-in-out !important;
 }
