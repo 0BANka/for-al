@@ -150,7 +150,7 @@ function showNextSentence() {
     } else {
         document.getElementById('typingText').textContent = '11010000 10011010 11010000 10111110 11010000 10111101 11010000 10110101 11010001 10000110 100000 11010000 10111111 11010000 10111110 11010001 10000001 11010000 10111011 11010000 10110000 11010000 10111101 11010000 10111000 11010001 10001111 101110 101110';
         document.getElementById('nextButton').style.display = 'none';
-        document.getElementById('copyButton').style.display = 'none';
+        document.getElementById('copyButton').style.display = 'block';
     }
 }
 

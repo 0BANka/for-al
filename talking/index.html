@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to me</title>
+    <link rel="stylesheet" href="../styles/talking/style.css">
+</head>
+
+<body>
+    <div id="start-screen" class="start-screen">
+        <div class="start-box">
+            <button id="start-btn" class="start-btn">Начать!</button>
+        </div>
+    </div>
+
+    <div class="game-container hidden">
+        <div class="dialogue-box">
+            <div id="message-counter-container">
+                <a href="#" id="message-counter" class="message-counter">#1</a>
+            </div>
+
+            <div class="speech-bubble">
+                <button id="copy-btn" class="copy-btn hidden">Копировать</button>
+                <p id="message"></p>
+                <div id="choices-container"></div>
+            </div>
+            <div class="character">
+                <img src="../img/avatar.png" alt="Персонаж" class="character-image">
+            </div>
+            <button id="next-btn" class="hidden">Далее</button>
+        </div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <p>Номер сообщения:</p>
+            <input type="number" id="message-number" min="1" value="1">
+            <button id="go-to-message">Перейти</button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
